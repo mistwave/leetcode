@@ -4,24 +4,26 @@
 #         self.val = x
 #         self.next = None
 
+
 class Solution(object):
+
     def mergeTwoLists(self, l1, l2):
         """
         :type l1: ListNode
         :type l2: ListNode
         :rtype: ListNode
         """
-        if l1 == None:
+        if l1 is None:
             return l2
-        elif l2 == None:
+        elif l2 is None:
             return l1
         fifo = []
         p1, p2 = l1, l2
-        while not (p1 == None and p2 == None):
-            if p1 == None:
+        while not (p1 is None and p2 is None):
+            if p1 is None:
                 fifo.append(p2)
                 p2 = p2.next
-            elif p2 == None:
+            elif p2 is None:
                 fifo.append(p1)
                 p1 = p1.next
             else:
@@ -32,10 +34,9 @@ class Solution(object):
                     fifo.append(p2)
                     p2 = p2.next
         if fifo != []:
-            for index in range(len(fifo)-1):
+            for index in range(len(fifo) - 1):
                 fifo[index].next = fifo[index + 1]
             fifo[-1].next = None
             return fifo[0]
         else:
             return []
-
