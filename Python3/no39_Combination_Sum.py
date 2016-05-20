@@ -18,9 +18,8 @@ class Solution(object):
     def iter(self, candidates, target, num, chosen, result):
         if target == 0:
             result.append(chosen[:])
-            return None
         elif target < 0:
-            return None
+            pass
         else:  # target > 0
             for i in range(num, len(candidates)):
                 if i > 0 and candidates[i] == candidates[i - 1]:
