@@ -26,3 +26,35 @@ class Solution(object):
         tmp = bitflag & (bitflag ^ (bitflag - 1))
         import math
         return int(math.log(tmp, 2) + 1)
+    # swap solution
+    def firstMissingPositive_2(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        n = len(nums)
+        i = 0
+        while i < n:
+            if nums[i] > n:
+                nums[i] = 0
+            elif nums[i] > 0: # and <= n
+                if not i == nums[i] - 1: # if match `nums[i] == i+1` skip this i
+                    newi = nums[i] - 1
+                    if nums[i] == nums[newi]: # repeated numbers
+                        nums[i] == 0
+                    else:
+                        nums[i], nums[newi] = nums[newi], nums[i]
+                        i -= 1
+            else: # nums[i] <= 0
+                pass
+            i += 1
+
+        for i in range(n):
+            if nums[i] != i+1:
+                return i+1
+        return n+1
+
+if __name__ == '__main__':
+    s = Solution()
+    res = s.firstMissingPositive_2([3,4,-1,1])
+    print(res)
