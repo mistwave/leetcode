@@ -20,3 +20,19 @@ class Solution(object):
         return rest
 
 
+    # iterative solution
+    def reverseList_fast(self, head):
+        """
+        :type head: ListNode
+        :rtype: ListNode
+        """
+        if head is None or head.next is None:
+            return head
+        reverse = None
+        first = head
+        while first is not None:
+            second = first.next
+            first.next = reverse
+            reverse = first
+            first = second
+        return reverse
