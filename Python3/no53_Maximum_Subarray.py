@@ -20,9 +20,9 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
-        N = len(nums)
-        start = maxsum = nums[-1]
-        for i in range(N - 2, -1, -1):
-            start = max(nums[i], start + nums[i])
-            maxsum = max(start, maxsum)
+
+        start = maxsum = nums[0]
+        for num in nums[1:]:
+            start = max(num, start + num)
+            maxsum = max(maxsum, start)
         return maxsum
